@@ -30,7 +30,7 @@ interface Origin {
     url: string
 }
   
-interface Location {
+export interface Location {
     name: string
     url: string
 }

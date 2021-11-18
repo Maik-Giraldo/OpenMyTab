@@ -4,24 +4,31 @@ import { Result } from 'src/app/shared/models/get-characters-res';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { InfiniteScrollService } from 'src/app/shared/services/infinite-scroll.service';
 import { CharacterService } from '../../details-character/services/character.service';
+import { FiltersCharacter } from '../models/filters-character';
+import { FilterCharacterService } from '../services/filter-character.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-filter-character',
+  templateUrl: './filter-character.component.html',
+  styleUrls: ['./filter-character.component.css']
 })
-export class HomeComponent implements OnInit {
+export class FilterCharacterComponent implements OnInit {
 
-  constructor(private apiService : ApiService, private infiniteScroll: InfiniteScrollService, private characterService: CharacterService, private router: Router) { }
+  constructor(private apiService : ApiService, private infiniteScroll: InfiniteScrollService, private filterCharacter: FilterCharacterService, private characterService: CharacterService, private router: Router) { }
 
-  characters!: Result[];
+  filters: FiltersCharacter = this.filterCharacter.filters;
+
+  characters: Result[] = [];
 
   nextPage: string | null = null; 
 
   loading : boolean = true;
 
-  ngOnInit(): void {
-    this.getCharacters();
+  async ngOnInit(): Promise<void> {
+    await this.apiService.findMatch(this.filters).then(page=>{
+      this.nextPage = `page=${page}`;
+      this.getNextCharacters();
+    })
 
     this.infiniteScroll.listenScroll().subscribe(x =>{
       this.getNextCharacters();

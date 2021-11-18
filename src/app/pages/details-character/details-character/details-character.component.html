@@ -2,8 +2,8 @@
 
 <br>
 
-<div class="row animated fadeIn" infiniteScroll>
-    <div class="col-md-3" *ngFor="let character of characters" (click)="viewDetails(character)">
+<div class="row animated fadeIn">
+    <div class="col-md-12">
         <div class="card text-white bg-dark mb-5">
             <div class="card-body">
               <h5 class="card-title">{{ character.name }}</h5>
@@ -18,9 +18,5 @@
               <p class="card-text text-muted ">{{ character.location.name }}</p>
             </div>
         </div>
-    </div>
-
-    <div class="spinner-grow mx-auto spinner-size" role="status" *ngIf="loading">
-      <span class="visually-hidden">Loading...</span>
     </div>
 </div>

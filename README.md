@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+Buenas prácticas aplicadas
+=======
+
+- Comunicación entre componentes con servicios.
+- Separación de herramientas (Pipes, Directives y Services) a nivel global.
+- Sistema modular (estructura de archivos).
+- Division entre componentes y páginas (Components, Pages)

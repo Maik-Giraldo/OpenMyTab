@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { HomeRoutingModule } from './home/home-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 
 
@@ -15,7 +16,8 @@ import { DirectivesModule } from 'src/app/shared/directives/directives.module';
     CommonModule,
     HomeRoutingModule,
     ComponentsModule, 
-    DirectivesModule
+    DirectivesModule,
+    PipesModule
   ]
 })
 export class HomeModule { }
